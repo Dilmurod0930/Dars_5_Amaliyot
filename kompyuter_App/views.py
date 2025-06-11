@@ -29,8 +29,8 @@ def  kom_create(request):
     description = models.TextField("Tavsif", blank=True, null=True)
     created_at = models.DateTimeField("Qo‘shilgan vaqt", auto_now_add=True)
     updated_at = models.DateTimeField("Yangilangan vaqt", auto_now=True)"""
+    kompyuter = Kompyuter()
     if  request.method == 'POST':
-        kompyuter = Kompyuter()
         kompyuter.name = request.POST['name']
         kompyuter.model = request.POST['model']
         kompyuter.cpu = request.POST['cpu']
@@ -45,3 +45,6 @@ def  kom_create(request):
         kompyuter.save()
         return  redirect("kom_list")
     return render(request, 'kompyuter/kom_form.html', {'kompyuter': 'kompyuter'})
+
+
+
