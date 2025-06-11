@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Telefon va Kompyuterlar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: url("https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1600&q=80") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .card-custom {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <h1 class="text-center mb-4">📱 Telefonlar</h1>
+    <div class="row">
+        {% for telefon in telefons %}
+        <div class="col-md-4">
+            <div class="card-custom">
+                {% if telefon.image %}
+                    <img src="{{ telefon.image.url }}" class="product-img mb-3" alt="{{ telefon.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/300x200?text=No+Image" class="product-img mb-3" alt="No Image">
+                {% endif %}
+                <h4>{{ telefon.name }} - {{ telefon.model }}</h4>
+                <p><strong>Narxi:</strong> {{ telefon.price }} so‘m</p>
+                {% if telefon.discount_price %}
+                <p><strong>Chegirma:</strong> {{ telefon.discount_price }} so‘m</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h1 class="text-center my-5">💻 Kompyuterlar</h1>
+    <div class="row">
+        {% for kompyuter in kompyuters %}
+        <div class="col-md-4">
+            <div class="card-custom">
+                {% if kompyuter.image %}
+                    <img src="{{ kompyuter.image.url }}" class="product-img mb-3" alt="{{ kompyuter.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/300x200?text=No+Image" class="product-img mb-3" alt="No Image">
+                {% endif %}
+                <h4>{{ kompyuter.name }} - {{ kompyuter.model }}</h4>
+                <p><strong>Narxi:</strong> {{ kompyuter.price }} so‘m</p>
+                {% if kompyuter.discount_price %}
+                <p><strong>Chegirma:</strong> {{ kompyuter.discount_price }} so‘m</p>
+                {% endif %}
+                <a href="" class="btn btn-info btn-sm">Batafsil</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
