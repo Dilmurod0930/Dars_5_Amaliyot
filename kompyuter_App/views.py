@@ -44,7 +44,7 @@ def  kom_create(request):
         kompyuter.description = request.POST['description']
         kompyuter.save()
         return  redirect("kom_list")
-    return render(request, 'kompyuter/kom_form.html', {'kompyuter': 'kompyuter'})
+    return render(request, 'kompyuter/kom_create.html', {'kompyuter': 'kompyuter'})
 
 
 
