@@ -1,6 +1,6 @@
 from  django.urls import path
-from  .views import tele_info
+from  .views import tele_list
 
 urlpatterns =[
-    path('tele_info', tele_info, name='tele_info'),
+    path('tele_list', tele_list, name='tele_list'),
 ]

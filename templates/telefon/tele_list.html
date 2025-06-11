@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Telefonlar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.75);
+            min-height: 100%;
+            padding: 60px 0;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.92);
+            color: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .telefon-img {
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .telefon-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+        .heading {
+            text-align: center;
+            font-weight: 700;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <div class="container">
+        <h1 class="heading">📱 Telefonlar bozoriga xush kelibsiz</h1>
+        <div class="row">
+            {% for telefon in telefons %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        {% if telefon.image %}
+                            <img src="{{ telefon.image.url }}" alt="{{ telefon.name }}" class="telefon-img w-100">
+                        {% else %}
+                            <img src="https://via.placeholder.com/400x220?text=No+Image" class="telefon-img w-100">
+                        {% endif %}
+                        <div class="p-3">
+                            <div class="telefon-title">{{ telefon.name }} - {{ telefon.model }}</div>
+                            <p><strong>Rang:</strong> {{ telefon.color }} | <strong>OS:</strong> {{ telefon.os }}</p>
+                            <p><strong>Xotira:</strong> {{ telefon.storage }} GB | <strong>RAM:</strong> {{ telefon.ram }} GB</p>
+                            {% if telefon.discount_price %}
+                                <p>
+                                    <span class="text-danger fw-bold">Chegirma: {{ telefon.discount_price }} so‘m</span><br>
+                                    <span class="text-decoration-line-through text-muted">{{ telefon.price }} so‘m</span>
+                                </p>
+                            {% else %}
+                                <p><span class="text-success fw-bold">Narxi: {{ telefon.price }} so‘m</span></p>
+                            {% endif %}
+                            <p class="small text-muted mb-2"><strong>Qo‘shilgan:</strong> {{ telefon.created_at|date:"Y-m-d H:i" }}</p>
+                            <a href="" class="btn btn-primary w-100">📄 Batafsil</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p class="text-warning">Hozircha hech qanday telefon topilmadi.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
