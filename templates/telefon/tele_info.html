@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ telefon.name }} - {{ telefon.model }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: #fff;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .info-card {
+            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .info-img {
+            width: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            max-height: 400px;
+        }
+
+        h2, h4 {
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        .back-btn {
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Slaom  Telefon  INfo  Pagega  hush  keldingiz  </h1>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="info-card">
+                <div class="text-center mb-4">
+                    <h2>{{ telefon.name }} - {{ telefon.model }}</h2>
+                </div>
+
+                {% if telefon.image %}
+                    <img src="{{ telefon.image.url }}" alt="{{ telefon.name }}" class="info-img mb-4">
+                {% else %}
+                    <img src="https://via.placeholder.com/600x400?text=No+Image" alt="No Image" class="info-img mb-4">
+                {% endif %}
+
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <p><strong>Rangi:</strong> {{ telefon.color }}</p>
+                        <p><strong>Operatsion tizim:</strong> {{ telefon.os }}</p>
+                        <p><strong>Xotira:</strong> {{ telefon.storage }} GB</p>
+                        <p><strong>RAM:</strong> {{ telefon.ram }} GB</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><strong>Narxi:</strong> {{ telefon.price }} so‘m</p>
+                        {% if telefon.discount_price %}
+                            <p><strong>Chegirma narxi:</strong> {{ telefon.discount_price }} so‘m</p>
+                        {% endif %}
+                        {% if telefon.description %}
+                            <p><strong>Tavsif:</strong> {{ telefon.description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <a href="{% url 'tele_list' %}" class="btn btn-light back-btn">🔙 Orqaga</a>
+                <a href="" class="btn btn-light back-btn">🔙 Tahrirlash</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
