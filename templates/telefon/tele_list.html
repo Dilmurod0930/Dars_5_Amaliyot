@@ -55,7 +55,7 @@
                 {% if telefon.discount_price %}
                 <p><strong>Chegirma:</strong> {{ telefon.discount_price }} so‘m</p>
                 {% endif %}
-                <a href="" class="btn btn-info btn-sm">Batafsil</a>
+                <a href="{% url  'tele_info', telefon.id %}" class="btn btn-info btn-sm">Batafsil</a>
             </div>
         </div>
         {% endfor %}
