@@ -35,20 +35,21 @@ def tele_update(request, id):
     if  request.method == 'POST':
         telefon.name = request.POST.get('name')
         telefon.model = request.POST.get('model')
-        color = request.POST.get('color')
-        discount_price = request.POST.get('discount_price')
-        price = request.POST.get('price')
-        storage = request.POST.get('storage')
-        ram = request.POST.get('ram')
-        os = request.POST.get('os')
+        telefon.color = request.POST.get('color')
+        telefon.discount_price = request.POST.get('discount_price')
+        telefon.price = request.POST.get('price')
+        telefon.storage = request.POST.get('storage')
+        telefon.ram = request.POST.get('ram')
+        telefon.os = request.POST.get('os')
+        telefon.description = request.POST.get('description')
+        telefon.image = request.FILES.get('image')
         image = request.POST.get('image')
         if image:
             telefon.image = image
-        description = request.POST.get('description')
-        telefon.save()
 
-        return redirect('tele_list')
-    return render(request, 'telefon/tele_info.html', context = {'telefon': telefon})
+        telefon.save()
+        return redirect('tele_info', id= id)
+    return render(request, 'telefon/tele_update.html', context = {'telefon': telefon})
 
 
 def tele_delete(request, id):
