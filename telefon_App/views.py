@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect , get_object_or_404
 from  .models import  Telefon
 
 # Create your views here.
@@ -18,3 +18,4 @@ def  tele_create(request):
 
 def tele_update(request, id):
     telefon = Telefon.objects.get(id=id)
+    if  request.method == 'POST':
