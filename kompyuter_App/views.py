@@ -66,7 +66,6 @@ def  kom_update(request, id):
         return redirect("kom_list")
     return  render(request,  'kompyuter/kom_update.html', {'kompyuter': kompyuter})
 
-
 def  kom_delete(request, id):
     kompyuter = get_object_or_404(Kompyuter, id=id)
     if  request.method == 'POST':
