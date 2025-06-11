@@ -58,7 +58,9 @@ def  kom_update(request, id):
         kompyuter.color = request.POST.get('color')
         kompyuter.price = request.POST.get('price')
         kompyuter.discount_price = request.POST.get('discount_price')
-        kompyuter.image = request.FILES['image']
+        image = request.FILES.get('image')
+        if image:
+            kompyuter.image = image
         kompyuter.description = request.POST.get('description')
         kompyuter.save()
         return redirect("kom_list")
@@ -69,5 +71,5 @@ def  kom_delete(request, id):
     kompyuter = get_object_or_404(Kompyuter, id=id)
     if  request.method == 'POST':
         kompyuter.delete()
-        return redirect("kom_info", id=id)
+        return redirect("kom_list")
     return render(request,  'kompyuter/kom_delete.html', {'kompyuter': kompyuter})
