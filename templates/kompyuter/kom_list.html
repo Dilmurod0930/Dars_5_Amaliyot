@@ -73,7 +73,7 @@
                 {% if kompyuter.discount_price %}
                 <p><strong>Chegirma:</strong> {{ kompyuter.discount_price }} so‘m</p>
                 {% endif %}
-                <a href="" class="btn btn-info btn-sm">Batafsil</a>
+                <a href="{%  url 'kom_info' kompyuter.id %}" class="btn btn-info btn-sm">Batafsil</a>
             </div>
         </div>
         {% endfor %}
