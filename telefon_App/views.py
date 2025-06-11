@@ -50,3 +50,10 @@ def tele_update(request, id):
         return redirect('tele_list')
     return render(request, 'telefon/tele_info.html', context = {'telefon': telefon})
 
+
+def tele_delete(request, id):
+    telefon  = get_object_or_404(Telefon, id=id)
+    if  request.method == 'POST':
+        telefon.delete()
+        return redirect('tele_list')
+    return render(request, 'telefon/tele_delete.html', context = {'telefon': telefon})
