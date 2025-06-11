@@ -1,4 +1,4 @@
-from django.shortcuts import render,  redirect
+from django.shortcuts import render,  redirect, get_object_or_404
 from .models import Kompyuter
 # Create your views here.
 def  main(request):
@@ -47,4 +47,9 @@ def  kom_create(request):
     return render(request, 'kompyuter/kom_create.html', {'kompyuter': 'kompyuter'})
 
 
-
+def  kom_delete(request, id):
+    kompyuter = get_object_or_404(Kompyuter, id=id)
+    if  request.method == 'POST':
+        kompyuter.delete()
+        return redirect("kom_list")
+    return render(request,  'kompyuter/kom_delete.html', {'kompyuter': kompyuter})
