@@ -46,6 +46,23 @@ def  kom_create(request):
         return  redirect("kom_list")
     return render(request, 'kompyuter/kom_create.html', {'kompyuter': 'kompyuter'})
 
+def  kom_update(request, id):
+    kompyuter = Kompyuter.objects.get(id=id)
+    if  request.method == 'POST':
+        kompyuter.name = request.POST.get('name')
+        kompyuter.model = request.POST.get('model')
+        kompyuter.cpu = request.POST.get('cpu')
+        kompyuter.ram = request.POST.get('ram')
+        kompyuter.storage = request.POST.get('storage')
+        kompyuter.screen_size = request.POST.get('screen_size')
+        kompyuter.color = request.POST.get('color')
+        kompyuter.price = request.POST.get('price')
+        kompyuter.discount_price = request.POST.get('discount_price')
+        kompyuter.image = request.FILES['image']
+        kompyuter.description = request.POST.get('description')
+        kompyuter.save()
+        return redirect("kom_list")
+    return  render(request,  'kompyuter/kom_update.html', {'kompyuter': kompyuter})
 
 
 def  kom_delete(request, id):
