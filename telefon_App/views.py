@@ -14,3 +14,7 @@ def  tele_info(request, id):
 
 def  tele_create(request):
     telefon = Telefon()
+
+
+def tele_update(request, id):
+    telefon = Telefon.objects.get(id=id)
