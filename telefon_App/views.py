@@ -11,3 +11,6 @@ def  tele_info(request, id):
     telefon = Telefon.objects.get(id=id)
     context = {'telefon': telefon}
     return render(request, 'telefon/tele_info.html', context = context)
+
+def  tele_create(request):
+    telefon = Telefon()
