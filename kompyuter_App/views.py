@@ -5,5 +5,5 @@ def  main(request):
     return render(request, 'main.html')
 
 
-def  kom_info(request):
-    return render(request, 'kompyuter/kom_info.html')
+def  kom_list(request):
+    return render(request, 'kompyuter/kom_list.html')
