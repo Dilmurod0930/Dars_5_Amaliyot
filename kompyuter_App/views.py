@@ -47,9 +47,10 @@ def  kom_create(request):
     return render(request, 'kompyuter/kom_create.html', {'kompyuter': 'kompyuter'})
 
 
+
 def  kom_delete(request, id):
     kompyuter = get_object_or_404(Kompyuter, id=id)
     if  request.method == 'POST':
         kompyuter.delete()
-        return redirect("kom_list")
+        return redirect("kom_info", id=id)
     return render(request,  'kompyuter/kom_delete.html', {'kompyuter': kompyuter})
