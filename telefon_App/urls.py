@@ -1,6 +1,7 @@
 from  django.urls import path
-from  .views import tele_list
+from  .views import tele_list, tele_info
 
 urlpatterns =[
     path('tele_list', tele_list, name='tele_list'),
+    path('tele_info/<int:id>', tele_info, name='tele_info'),
 ]
