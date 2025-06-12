@@ -5,6 +5,19 @@
     <title>Title</title>
 </head>
 <body>
+<form method="post" enctype="multipart/form-data">
+  {%  csrf_token %}
+  <input type="text" name="name"  placeholder="Telefon nomi">
+  <input type="text" name="model"  placeholder="Model">
+  <input type="text" name="color"  placeholder="Rangi">
+  <input type="text" name="discount_price"  placeholder="Chegirma narxi (so‘m)">
+  <input type="number" name="price"  placeholder="Narxi (so'm)">
+  <input type="number" name="storage" placeholder="Xotira (GB)">
+  <input type="number" name="ram"   placeholder="Ram">
+  <input type="text" name="os"   placeholder="Operatsion tizim">
+  <input type="file" name="image" >
+  <input type="text" name="description"  placeholder="Tavsif">
 
+  <button type="submit">Yaratish</button>
 </body>
 </html>
