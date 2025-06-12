@@ -28,6 +28,20 @@ def  tele_info(request, id):
 
 def  tele_create(request):
     telefon = Telefon()
+    if  request.method == 'POST':
+        telefon.name = request.POST['name']
+        telefon.model = request.POST['model']
+        telefon.color = request.POST['color']
+        telefon.discount_price = request.POST['discount_price']
+        telefon.price = request.POST['price']
+        telefon.storage = request.POST['storage']
+        telefon.ram = request.POST['ram']
+        telefon.os = request.POST['os']
+        telefon.image = request.FILES['image']
+        telefon.description = request.POST['description']
+        telefon.save()
+        return redirect('tele_list')
+    return render(request, 'telefon/tele_create.html', context = {'telefon': 'telefon'})
 
 
 def tele_update(request, id):
