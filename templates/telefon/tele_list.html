@@ -56,6 +56,8 @@
                 <p><strong>Chegirma:</strong> {{ telefon.discount_price }} so‘m</p>
                 {% endif %}
                 <a href="{% url  'tele_info' telefon.id %}" class="btn btn-info btn-sm">Batafsil</a>
+                <a href="{% url 'main' %}" class="btn btn-outline-warning back-btn">🔙 Orqaga</a>
+
             </div>
         </div>
         {% endfor %}
