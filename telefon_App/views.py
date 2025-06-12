@@ -43,7 +43,6 @@ def  tele_create(request):
         return redirect('tele_list')
     return render(request, 'telefon/tele_create.html', context = {'telefon': 'telefon'})
 
-
 def tele_update(request, id):
     telefon = Telefon.objects.get(id=id)
     if  request.method == 'POST':
@@ -64,7 +63,6 @@ def tele_update(request, id):
         telefon.save()
         return redirect('tele_info', id= id)
     return render(request, 'telefon/tele_update.html', context = {'telefon': telefon})
-
 
 def tele_delete(request, id):
     telefon  = get_object_or_404(Telefon, id=id)
